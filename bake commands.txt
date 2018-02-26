@@ -1,0 +1,34 @@
+
+//Migration///
+
+$ bin/cake orm_cache clear
+
+//If you are dealing with a pre-existing database and want to start using migrations, or to version control the initial schema of your application’s database, you can run the migration_snapshot command:
+
+$ bin/cake bake migration_snapshot Initial
+
+//get the records to migrate to new machine
+
+$ bin/cake bake seed --data Artikel
+$ bin/cake bake seed --data Kategoriartikel
+$ bin/cake bake seed --data Menu
+$ bin/cake bake seed --data Roles
+$ bin/cake bake seed --data Staticpage
+$ bin/cake bake seed --data Users
+
+
+
+$ bin/cake orm_cache clear
+
+// after the file is created, run this on the new machine
+
+$ bin/cake migrations migrate
+
+then seed the newly created database
+
+To seed your database, you can use the seed subcommand:
+
+# Without parameters, the seed subcommand will run all available seeders
+# in the target directory, in alphabetical order.
+
+$ bin/cake migrations seed
