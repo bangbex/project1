@@ -59,17 +59,19 @@ class AppController extends Controller
             'loginAction' => [
                 'controller'=>'Users',
                 'action'=>'login',
+                'prefix'=>'admin',
                 'plugin'=>null,
                 ],
             'loginRedirect' => [
                 'controller'=>'Dashboard',
-                'action'=>'index'
+                'action'=>'index',
+                'prefix'=>'admin',
                 ],
             'authError' => __d('cake', 'You are not authorized to access that location.'),
             'unauthorizedRedirect' => $this->referer(),
         ]);
         
-        //$this->Auth->allow('display','index');
+        $this->Auth->allow('display');
         //$this->Auth->deny();
         
         
