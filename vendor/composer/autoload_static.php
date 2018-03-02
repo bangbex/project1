@@ -330,6 +330,13 @@ class ComposerStaticInitf2a41e5f0fc339e98ed62924513299e7
                 0 => __DIR__ . '/..' . '/jakub-onderka/php-console-color/src',
             ),
         ),
+        'I' => 
+        array (
+            'Imagine' => 
+            array (
+                0 => __DIR__ . '/..' . '/imagine/imagine/lib',
+            ),
+        ),
         'D' => 
         array (
             'Detection' => 

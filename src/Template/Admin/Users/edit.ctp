@@ -14,13 +14,13 @@
 
     <div class='row'>
     <div class='col-md-6'>
-    <?= $this->Form->create($user , ['role'=>'form']) ?>
+    <?= $this->Form->create($user , ['role'=>'form','type'=>'file']) ?>
         <?php
             echo $this->Form->control('role_id', ['options' => $roles ,'style'=>'width:100%', 'class'=>'form-control select2']);
             echo $this->Form->control('username', ['class'=>'form-control']);
             echo $this->Form->control('password', ['class'=>'form-control']);
             echo $this->Form->control('email', ['class'=>'form-control']);
-            echo $this->Form->control('image_path', ['class'=>'form-control']);
+            echo $this->Form->control('image_path', ['type'=>'file']);
         ?>
     <?= $this->Form->button(__('Submit'),['class'=>'btn btn-primary']) ?>
     <?= $this->Form->end() ?>
