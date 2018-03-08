@@ -204,6 +204,8 @@ Inflector::rules('uninflected',
                                 'staticpage',
                                 'menu',
                                 'dashboard',
+                                'staticpageimages',
+                                'artikelimages',
                                 ]
                 );
 

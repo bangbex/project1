@@ -1,7 +1,6 @@
 <?php
 namespace App\Model\Entity;
 
-use Cake\Utility\Inflector;
 use Cake\ORM\Entity;
 
 /**
@@ -20,6 +19,7 @@ use Cake\ORM\Entity;
  *
  * @property \App\Model\Entity\User $user
  * @property \App\Model\Entity\Menu $menu
+ * @property \App\Model\Entity\Staticpageimages[] $staticpageimages
  */
 class Staticpage extends Entity
 {
@@ -44,7 +44,7 @@ class Staticpage extends Entity
         'created' => true,
         'modified' => true,
         'user' => true,
-        'menu' => true
+        'menu' => true,
+        'staticpageimages' => true
     ];
-    
 }

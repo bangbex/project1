@@ -18,18 +18,7 @@ class MenuSeed extends AbstractSeed
      */
     public function run()
     {
-        $data = [
-            [
-                'id' => '1',
-                'parent_id' => NULL,
-                'lft' => '1',
-                'rght' => '2',
-                'name' => 'Profil',
-                'description' => '',
-                'created' => '2018-02-17 04:33:53',
-                'modified' => '2018-02-17 04:33:53',
-            ],
-        ];
+        $data = [];
 
         $table = $this->table('menu');
         $table->insert($data)->save();

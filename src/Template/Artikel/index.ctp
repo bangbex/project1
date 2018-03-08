@@ -3,20 +3,11 @@
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Artikel[]|\Cake\Collection\CollectionInterface $artikel
  */
+ 
+    $this->extend('/Admin/Common/ParentIndex');
+    $this->assign('judul',$judul);
 ?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?> baked from AdminTheme</li>
-        <li><?= $this->Html->link(__('New Artikel'), ['action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Users'), ['controller' => 'Users', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New User'), ['controller' => 'Users', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Kategoriartikel'), ['controller' => 'Kategoriartikel', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Kategoriartikel'), ['controller' => 'Kategoriartikel', 'action' => 'add']) ?></li>
-    </ul>
-</nav>
-<div class="artikel index large-9 medium-8 columns content">
-    <h3><?= __('Artikel') ?></h3>
-    <table cellpadding="0" cellspacing="0">
+    <table class="table table-hover">
         <thead>
             <tr>
                 <th scope="col"><?= $this->Paginator->sort('id') ?></th>
@@ -44,22 +35,24 @@
                 <td><?= h($artikel->created) ?></td>
                 <td><?= h($artikel->modified) ?></td>
                 <td class="actions">
-                    <?= $this->Html->link(__('View'), ['action' => 'view', $artikel->id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $artikel->id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $artikel->id], ['confirm' => __('Are you sure you want to delete # {0}?', $artikel->id)]) ?>
+                    <?= $this->Html->link('<span class="label label-default"><i class="fa fa-pencil"></i></span>', ['action' => 'edit', $artikel->id], ['escape'=>false]) ?>
+                    <?= $this->Form->postLink('<span class="label label-danger"><i class="fa fa-times"></i></span>', ['action' => 'delete', $artikel->id], ['escape'=>false,'confirm' => __('yakin menghapus User :  {0} ?', $artikel->id)]) ?>
                 </td>
             </tr>
             <?php endforeach; ?>
         </tbody>
+        <tfoot>
+            <tr>
+                <th scope="col"><?= $this->Paginator->sort('id') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('user_id') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('kategoriartikel_id') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('title') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('slug') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('image_path') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('is_published') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('created') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('modified') ?></th>
+                <th scope="col" class="actions"><?= __('Actions') ?></th>
+            </tr>
+        </tfoot>
     </table>
-    <div class="paginator">
-        <ul class="pagination">
-            <?= $this->Paginator->first('<< ' . __('first')) ?>
-            <?= $this->Paginator->prev('< ' . __('previous')) ?>
-            <?= $this->Paginator->numbers() ?>
-            <?= $this->Paginator->next(__('next') . ' >') ?>
-            <?= $this->Paginator->last(__('last') . ' >>') ?>
-        </ul>
-        <p><?= $this->Paginator->counter(['format' => __('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')]) ?></p>
-    </div>
-</div>

@@ -19,6 +19,7 @@ use Cake\ORM\Entity;
  *
  * @property \App\Model\Entity\User $user
  * @property \App\Model\Entity\Kategoriartikel $kategoriartikel
+ * @property \App\Model\Entity\Artikelimages[] $artikelimages
  */
 class Artikel extends Entity
 {
@@ -43,6 +44,7 @@ class Artikel extends Entity
         'created' => true,
         'modified' => true,
         'user' => true,
-        'kategoriartikel' => true
+        'kategoriartikel' => true,
+        'artikelimages' => true
     ];
 }

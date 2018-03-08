@@ -34,11 +34,15 @@ class User extends Entity
         'role_id' => true,
         'username' => true,
         'email' => true,
+        'image' => true,
+        'dir' => true,
+        'relative_path' => true,
         'password' => true,
         'created' => true,
         'modified' => true,
         'role' => true,
-        'artikel' => true
+        'artikel' => true,
+        'staticpage' => true,
     ];
 
     /**

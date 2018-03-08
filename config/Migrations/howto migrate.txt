@@ -1,0 +1,31 @@
+create migration schema:
+
+$ bin/cake bake migration_snapshot Initial
+
+$ bin/cake bake seed Kategoriartikel
+$ bin/cake bake seed Menu
+$ bin/cake bake seed Roles
+$ bin/cake bake seed Users
+$ bin/cake bake seed Artikel
+$ bin/cake bake seed Artikelimages
+$ bin/cake bake seed Staticpage
+$ bin/cake bake seed Staticpageimages
+
+
+
+
+
+
+
+to migrate:
+
+$ bin/cake migrations migrate
+
+$ bin/cake migrations seed --seed Kategoriartikel
+$ bin/cake migrations seed --seed Menu
+$ bin/cake migrations seed --seed Roles
+$ bin/cake migrations seed --seed Users
+$ bin/cake migrations seed --seed Artikel
+$ bin/cake migrations seed --seed Artikelimages
+$ bin/cake migrations seed --seed Staticpage
+$ bin/cake migrations seed --seed Staticpageimages

@@ -12,12 +12,17 @@ use App\Controller\AppController;
  */
 class ArtikelController extends AppController
 {
-    
+
+    /**
+     * beforeRender method
+     *
+     * @return \Cake\Http\Response|void
+     */
+     
     public function beforeRender(\Cake\Event\Event $event){
         
         $this->set(['judul'=>'Artikel']);
     }
-
     /**
      * Index method
      *
@@ -43,7 +48,7 @@ class ArtikelController extends AppController
     public function view($id = null)
     {
         $artikel = $this->Artikel->get($id, [
-            'contain' => ['Users', 'Kategoriartikel']
+            'contain' => ['Users', 'Kategoriartikel', 'Artikelimages']
         ]);
 
         $this->set('artikel', $artikel);

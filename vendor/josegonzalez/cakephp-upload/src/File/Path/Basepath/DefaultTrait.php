@@ -16,8 +16,12 @@ trait DefaultTrait
      */
     public function basepath()
     {
-        $defaultPath = 'webroot{DS}files{DS}{model}{DS}{field}{DS}';
+        //$defaultPath = 'webroot{DS}files{DS}{model}{DS}{field}{DS}';
+        $defaultPath = 'webroot{DS}files{DS}{model}{DS}{field}{DS}{primaryKey}{DS}';
+        
+        
         $path = Hash::get($this->settings, 'path', $defaultPath);
+        
         if (strpos($path, '{primaryKey}') !== false) {
             if ($this->entity->isNew()) {
                 throw new LogicException('{primaryKey} substitution not allowed for new entities');
@@ -38,6 +42,7 @@ trait DefaultTrait
             '{time}' => time(),
             '{microtime}' => microtime(true),
             '{DS}' => DIRECTORY_SEPARATOR,
+            
         ];
 
         if (preg_match_all("/{field-value:(\w+)}/", $path, $matches)) {
@@ -54,11 +59,27 @@ trait DefaultTrait
                 $replacements[sprintf('{field-value:%s}', $field)] = $value;
             }
         }
-
-        return str_replace(
+        
+        $x = str_replace(
             array_keys($replacements),
             array_values($replacements),
             $path
+        );
+        
+        return str_replace('\\','/',$x);
+    }
+    public function relativepath(){
+        return str_replace(
+            '\\',
+            '/',
+            'files'.
+                DIRECTORY_SEPARATOR.
+                $this->table->alias().
+                DIRECTORY_SEPARATOR.
+                $this->field.
+                DIRECTORY_SEPARATOR.
+                $this->entity->get($this->table->primaryKey()).
+                DIRECTORY_SEPARATOR
         );
     }
 }

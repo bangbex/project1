@@ -11,6 +11,7 @@ use Cake\Validation\Validator;
  *
  * @property \App\Model\Table\UsersTable|\Cake\ORM\Association\BelongsTo $Users
  * @property \App\Model\Table\KategoriartikelTable|\Cake\ORM\Association\BelongsTo $Kategoriartikel
+ * @property \App\Model\Table\ArtikelimagesTable|\Cake\ORM\Association\HasMany $Artikelimages
  *
  * @method \App\Model\Entity\Artikel get($primaryKey, $options = [])
  * @method \App\Model\Entity\Artikel newEntity($data = null, array $options = [])
@@ -48,6 +49,9 @@ class ArtikelTable extends Table
         $this->belongsTo('Kategoriartikel', [
             'foreignKey' => 'kategoriartikel_id',
             'joinType' => 'INNER'
+        ]);
+        $this->hasMany('Artikelimages', [
+            'foreignKey' => 'artikel_id'
         ]);
     }
 
@@ -110,15 +114,4 @@ class ArtikelTable extends Table
 
         return $rules;
     }
-    
-    public function beforeSave($event, $entity, $options){
-        
-        
-        $entity->slug = $entity->id.'/'.Inflector::slug($entity->title);
-        
-        
-    }
-    
-    
-        
 }

@@ -15,7 +15,7 @@
                 <th scope="col"><?= $this->Paginator->sort('menu_id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('title') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('slug') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('image_path') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('staticpageimage.filename') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('is_published') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('created') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('modified') ?></th>
@@ -25,12 +25,12 @@
         <tbody>
             <?php foreach ($staticpage as $staticpage): ?>
             <tr>
-                <td><?= $this->Number->format($staticpage->id) ?></td>
+                <td><?php echo $this->Image->display($staticpage, ['mode'=>'thumb']); ?></td>
                 <td><?= $staticpage->has('user') ? $this->Html->link($staticpage->user->id, ['controller' => 'Users', 'action' => 'view', $staticpage->user->id]) : '' ?></td>
                 <td><?= $staticpage->has('menu') ? $this->Html->link($staticpage->menu->name, ['controller' => 'Menu', 'action' => 'view', $staticpage->menu->id]) : '' ?></td>
                 <td><?= h($staticpage->title) ?></td>
                 <td><?= h($staticpage->slug) ?></td>
-                <td><?= h($staticpage->image_path) ?></td>
+                <td><?= h($staticpage->staticpageimage->filename) ?></td>
                 <td><?= h($staticpage->is_published) ?></td>
                 <td><?= h($staticpage->created) ?></td>
                 <td><?= h($staticpage->modified) ?></td>
@@ -48,7 +48,7 @@
                 <th scope="col"><?= $this->Paginator->sort('menu_id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('title') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('slug') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('image_path') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('staticpageimage.filename') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('is_published') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('created') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('modified') ?></th>

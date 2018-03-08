@@ -18,8 +18,7 @@ class ArtikelSeed extends AbstractSeed
      */
     public function run()
     {
-        $data = [
-        ];
+        $data = [];
 
         $table = $this->table('artikel');
         $table->insert($data)->save();

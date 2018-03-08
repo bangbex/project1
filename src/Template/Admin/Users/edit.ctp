@@ -20,7 +20,7 @@
             echo $this->Form->control('username', ['class'=>'form-control']);
             echo $this->Form->control('password', ['class'=>'form-control']);
             echo $this->Form->control('email', ['class'=>'form-control']);
-            echo $this->Form->control('image_path', ['type'=>'file']);
+            echo $this->Form->control('image', ['type'=>'file']);
         ?>
     <?= $this->Form->button(__('Submit'),['class'=>'btn btn-primary']) ?>
     <?= $this->Form->end() ?>

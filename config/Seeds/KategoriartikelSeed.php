@@ -18,18 +18,7 @@ class KategoriartikelSeed extends AbstractSeed
      */
     public function run()
     {
-        $data = [
-            [
-                'id' => '1',
-                'parent_id' => NULL,
-                'lft' => '1',
-                'rght' => '2',
-                'name' => 'Berita',
-                'description' => '',
-                'created' => '2018-02-15 06:50:15',
-                'modified' => '2018-02-15 07:54:39',
-            ],
-        ];
+        $data = [];
 
         $table = $this->table('kategoriartikel');
         $table->insert($data)->save();

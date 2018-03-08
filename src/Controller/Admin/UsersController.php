@@ -94,6 +94,10 @@ class UsersController extends AppController
      */
     public function index()
     {
+        
+       // $x = new \App\CustomClass\MyTransformer();
+       // $x->test();
+        
         $this->paginate = [
             'contain' => ['Roles']
         ];
@@ -148,12 +152,15 @@ class UsersController extends AppController
      */
     public function edit($id = null)
     {
-        $user = $this->Users->get($id);
+        $user = $this->Users->get($id, [
+            'contain' => []
+        ]);
+        
         if ($this->request->is(['patch', 'post', 'put'])) {
             $user = $this->Users->patchEntity($user, $this->request->getData());
-            debug($this->request->getData());
-            debug($user);
-            exit;
+            //debug($this->request->getData());
+            //debug($user);
+            //exit;
             if ($this->Users->save($user)) {
                 $this->Flash->success(__('The user has been saved.'));
 
