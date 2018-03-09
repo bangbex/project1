@@ -86,12 +86,6 @@ class ArtikelTable extends Table
             ->notEmpty('body');
 
         $validator
-            ->scalar('image_path')
-            ->maxLength('image_path', 255)
-            ->requirePresence('image_path', 'create')
-            ->notEmpty('image_path');
-
-        $validator
             ->boolean('is_published')
             ->requirePresence('is_published', 'create')
             ->notEmpty('is_published');

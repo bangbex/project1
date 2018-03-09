@@ -10,6 +10,9 @@ class MyTransformer extends DefaultTransformer
     public function transform(){
         
         $extension = pathinfo($this->data['name'], PATHINFO_EXTENSION);
+        
+        debug($this->data);
+        exit;
         // Store the thumbnail in a temporary file
         
         

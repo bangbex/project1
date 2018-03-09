@@ -20,7 +20,7 @@
             echo $this->Form->control('menu_id', ['options' => $menu ,'style'=>'width:100%', 'class'=>'form-control select2']);
             echo $this->Form->control('title', ['class'=>'form-control']);
             echo $this->Form->control('body', ['class'=>'form-control ckeditor']);
-            echo $this->Form->control('Staticpageimages.filename', [ 'type'=>'file']);
+            echo $this->Form->control('staticpageimages.thefilename', [ 'type'=>'file']);
             echo $this->Form->control('is_published', ['class'=>'flat-red']);
         ?>
     <?= $this->Form->button(__('Submit'),['class'=>'btn btn-primary']) ?>

@@ -12,7 +12,6 @@ use Cake\ORM\Entity;
  * @property string $title
  * @property string $slug
  * @property string $body
- * @property string $image_path
  * @property bool $is_published
  * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime $modified
@@ -39,7 +38,6 @@ class Artikel extends Entity
         'title' => true,
         'slug' => true,
         'body' => true,
-        'image_path' => true,
         'is_published' => true,
         'created' => true,
         'modified' => true,

@@ -34,6 +34,7 @@ class StaticpageController extends AppController
             'contain' => ['Users', 'Menu']
         ];
         $staticpage = $this->paginate($this->Staticpage);
+        
 
         $this->set(compact('staticpage'));
     }
@@ -90,13 +91,21 @@ class StaticpageController extends AppController
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $staticpage = $this->Staticpage->patchEntity($staticpage, $this->request->getData());
-            //debug($this->request->getData());
-            //debug($staticpage);
             if ($this->Staticpage->save($staticpage)) {
                 $this->Flash->success(__('The staticpage has been saved.'));
 
                 return $this->redirect(['action' => 'index']);
             }
+            /*
+            $x = $staticpage->errors();
+            if($x){
+                debug($staticpage);
+                debug($x);
+                exit;
+                
+            }
+            */
+            
             $this->Flash->error(__('The staticpage could not be saved. Please, try again.'));
         }
         $users = $this->Staticpage->Users->find('list', ['limit' => 200]);

@@ -39,6 +39,26 @@ class StaticpageimagesTable extends Table
         $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');
+        
+        $this->addBehavior('Josegonzalez/Upload.Upload', [
+            'thefilename' => [
+                 'nameCallback' => function ($data, $settings) {
+                         $name = substr(md5(microtime()), 0, 8) . '-'  . strtolower($data['name']);
+                         return $name;
+                  },
+                 'transformer'=> '\App\CustomClass\MyTransformer', 
+                 'keepFilesOnDelete'=>false,
+                 'deleteCallback'=>function($path, $entity, $field, $settings){
+                        return [
+                            $path.$entity->{$field},
+                            $path.'thumb-'.$entity->{$field},
+                            $path.'box-'.$entity->{$field},
+                            $path.'landscape1-'.$entity->{$field},
+                            $path.'landscape2-'.$entity->{$field},
+                        ];
+                  },
+             ],
+        ]);
 
         $this->belongsTo('Staticpage', [
             'foreignKey' => 'staticpage_id',
@@ -58,35 +78,8 @@ class StaticpageimagesTable extends Table
             ->integer('id')
             ->allowEmpty('id', 'create');
 
-        $validator
-            ->scalar('filename')
-            ->maxLength('filename', 255)
-            ->requirePresence('filename', 'create')
-            ->notEmpty('filename');
 
-        $validator
-            ->scalar('relative_path')
-            ->maxLength('relative_path', 255)
-            ->requirePresence('relative_path', 'create')
-            ->notEmpty('relative_path');
 
-        $validator
-            ->scalar('dir')
-            ->maxLength('dir', 255)
-            ->requirePresence('dir', 'create')
-            ->notEmpty('dir');
-
-        $validator
-            ->scalar('type')
-            ->maxLength('type', 255)
-            ->requirePresence('type', 'create')
-            ->notEmpty('type');
-
-        $validator
-            ->scalar('size')
-            ->maxLength('size', 255)
-            ->requirePresence('size', 'create')
-            ->notEmpty('size');
 
         return $validator;
     }
@@ -104,4 +97,14 @@ class StaticpageimagesTable extends Table
 
         return $rules;
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }

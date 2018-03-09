@@ -8,7 +8,7 @@ use Cake\ORM\Entity;
  *
  * @property int $id
  * @property int $staticpage_id
- * @property string $filename
+ * @property string $thefilename
  * @property string $relative_path
  * @property string $dir
  * @property string $type
@@ -32,7 +32,7 @@ class Staticpageimages extends Entity
      */
     protected $_accessible = [
         'staticpage_id' => true,
-        'filename' => true,
+        'thefilename' => true,
         'relative_path' => true,
         'dir' => true,
         'type' => true,
